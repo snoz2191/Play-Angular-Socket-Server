@@ -1,0 +1,165 @@
+td.pad {
+	padding-right:20px;
+}
+
+/* navbar */
+.navbar-default {
+	background: #3584d7;
+	background: -moz-linear-gradient(top,  #3584d7 0%, #63a6e3 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3584d7), color-stop(100%,#63a6e3));
+	background: -webkit-linear-gradient(top,  #3584d7 0%,#63a6e3 100%);
+	background: -o-linear-gradient(top,  #3584d7 0%,#63a6e3 100%);
+	background: -ms-linear-gradient(top,  #3584d7 0%,#63a6e3 100%);
+	background: linear-gradient(to bottom,  #3584d7 0%,#63a6e3 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3584d7', endColorstr='#63a6e3',GradientType=0 );
+	border: 1px solid #1d6511;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.nav > li > a:hover{
+	background-color: #63A7E4 !important;
+    border-style: solid;
+    border-width: 0 1px 0 1px;
+    border-color: #3D81BE
+}
+
+.navbar-default .navbar-nav > .active > a{
+	background-color: #63A7E4 !important;
+    border-style: solid;
+    border-width: 0 1px 0 1px !important;
+    border-color: #3D81BE
+}
+
+.navbar-default .navbar-nav > li:last-child > a{
+    color: #fff !important;
+    border-style: solid;
+    border-width: 0 1px 0 0;
+    border-color: #3D81BE;
+}
+
+.nav > li > a:hover{
+	background-color: #3A94E5 !important;
+    border-style: solid;
+    border-width: 0 1px 0 1px !important;
+    border-color: #3D81BE
+}
+
+.navbar-default .navbar-nav > li:first-child > a{
+    color: #fff !important;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    border-color: #3D81BE;
+}
+
+
+/* title */
+.navbar-brand {
+    color: #fff !important;
+}
+
+/*Round box*/
+.round-gray-box{
+    border-style:solid;
+    border-width:2%;
+    border-color:gray;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    padding:1%;
+    padding-bottom:2%;
+    color: #000
+}
+
+/*CSS Caras de Sentimiento*/
+.Positive{
+      width:40px;
+      height:40px;
+      background-size:100%;
+      background-image:url("../images/smiley_happy-512.png");
+      margin-left:0%;
+}
+
+.Neutral{
+      width:40px;
+      height:40px;
+      background-size:100%;
+      background-image:url("../images/smiley_neutral-512.png");
+      margin-left:0%;
+}
+
+.Negative{
+      margin-left:0%;
+      width:40px;
+      height:40px;
+      background-size:100%;
+      background-image:url("../images/smiley_sad-512.png");
+}
+
+.Positive:active{
+      width:40px;
+      height:40px;
+      background-size:100%;
+      background-image:url("../images/smiley_happy-512-active.png");
+      margin-left:0%;
+}
+
+.Neutral:active{
+      width:40px;
+      height:40px;
+      background-size:100%;
+      background-image:url("../images/smiley_neutral-512-active.png");
+      margin-left:0%;
+}
+
+.Negative:active{
+      margin-left:0%;
+      width:40px;
+      height:40px;
+      background-size:100%;
+      background-image:url("../images/smiley_sad-512-active.png");
+}
+
+.tweet-block {
+  padding: 12px 20px 12px;
+  margin:2%;
+  background: #3584d7;
+  text-align: center;
+  background: -moz-linear-gradient(top,  #3584d7 0%, #63a6e3 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3584d7), color-stop(100%,#63a6e3));
+  background: -webkit-linear-gradient(top,  #3584d7 0%,#63a6e3 100%);
+  background: -o-linear-gradient(top,  #3584d7 0%,#63a6e3 100%);
+  background: -ms-linear-gradient(top,  #3584d7 0%,#63a6e3 100%);
+  background: linear-gradient(to bottom,  #3584d7 0%,#63a6e3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3584d7', endColorstr='#63a6e3',GradientType=0 );
+  border: 1px solid #1d6511;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  box-shadow: 0 5px 12px rgba(0,0,0,.4);
+  -webkit-box-shadow: 0 5px 12px rgba(0,0,0,.4);
+  -moz-box-shadow: 0 5px 12px rgba(0,0,0,.4);
+  -khtml-box-shadow: 0 5px 12px rgba(0,0,0,.4);
+  color: white;
+}
+
+#ex1Slider {
+    width:100% !important;
+}
+#ex1Slider .slider-selection {
+	background: gray;
+}
+
+#ex1Slider .slider-track{
+	background: gray;
+}
+
+.btn.btn-default{
+    background: #3584d7 !important;
+    color: #fff !important;
+}
+
+input:focus:invalid{
+    border-color: #FA787E;
+}

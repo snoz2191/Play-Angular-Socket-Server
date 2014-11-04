@@ -1,0 +1,49 @@
+/*
+ * Author: Snoz
+ */
+
+use eventual
+
+db.dropDatabase()
+
+db.createCollection('Tweets')
+
+db.Tweets.insert({
+	Text: 'Tweet de Prueba 1',
+	PosiVote: 0,
+	NeuVote: 0,
+	NegVote: 0,
+	User: '',
+})
+
+db.Tweets.insert({
+	Text: 'Tweet de Prueba 2',
+	PosiVote: 0,
+	NeuVote: 0,
+	NegVote: 0,
+	User: '',
+})
+
+db.Tweets.insert({
+	Text: 'Tweet de Prueba 3',
+	PosiVote: 0,
+	NeuVote: 0,
+	NegVote: 0,
+	User: '',
+})
+
+db.Tweets.insert({
+	Text: 'Tweet de Prueba 4',
+	PosiVote: 0,
+	NeuVote: 0,
+	NegVote: 0,
+	User: '',
+})
+
+db.Tweets.insert({
+	Text: 'Tweet de Prueba 5',
+	PosiVote: 0,
+	NeuVote: 0,
+	NegVote: 0,
+	User: '',
+})
