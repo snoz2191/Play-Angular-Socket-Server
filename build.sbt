@@ -22,10 +22,7 @@ resolvers += "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositor
 libraryDependencies ++= Seq(
   cache,
   filters,
-  // ReactiveMongo dependencies
-  "org.reactivemongo" %% "reactivemongo" % "0.10.5.akka23-SNAPSHOT",
-  // ReactiveMongo dependencies
-  "org.reactivemongo" %% "play2-reactivemongo" % "0.10.2"
+  "com.couchbase.client" % "couchbase-client" % "1.4.3"
 )
 
 unmanagedResourceDirectories in Assets += baseDirectory.value / "bower_components"

@@ -4,59 +4,49 @@ import play.api.Logger
 import play.api.libs.json.{Writes, Reads, Json}
 import play.api.libs.functional.syntax._
 import play.api.libs.json._
-import reactivemongo.bson.{BSONDocument, BSONDocumentReader, BSONDocumentWriter, BSONObjectID, BSONObjectIDIdentity, BSONStringHandler, BSONNumberLike}
-import reactivemongo.bson.Producer.nameValue2Producer
-import play.modules.reactivemongo.json.BSONFormats._
 /*
  * Created by domingo on 08/08/14.
  */
-case class Tweet(_id: Option[BSONObjectID], text: String, posivote: Int, neuvote: Int, negvote: Int, user: Option[String])
+case class Tweet(profile_image_url_https: String, created_at: String, id_str: String, from_user: String,
+                 from_user_id_str:String, from_username: String, text: String, lang: String, id: Long,
+                 possibly_sensitive: Boolean, retweeted: Boolean, followers_count: Int, favorite_count: Int,
+                 retweet_count: Int)
 
 object Tweet {
   /** serialize/Deserialize a Tweet into/from JSON value */
 //  implicit val tweetFormat = Json.format[Tweet]
 
   implicit val TweetToJson : Writes[Tweet] = (
-    (__ \ "_id").writeNullable[String].contramap[Option[BSONObjectID]](l => l.map(_.stringify)) and
+      (__ \ "profile_image_url_https").write[String] and
+      (__ \ "created_at").write[String] and
+      (__ \ "id_str").write[String] and
+      (__ \ "from_user").write[String] and
+      (__ \ "from_username").write[String] and
+      (__ \ "from_user_id_str").write[String] and
       (__ \ "text").write[String] and
-      (__ \ "posivote").write[Int] and
-      (__ \ "neuvote").write[Int] and
-      (__ \ "negvote").write[Int] and
-      (__ \ "user").writeNullable[String]
+      (__ \ "lang").write[String] and
+      (__ \ "id").write[Long] and
+      (__ \ "possibly_sensitive").write[Boolean] and
+      (__ \ "retweeted").write[Boolean] and
+      (__ \ "followers_count").write[Int] and
+      (__ \ "favorite_count").write[Int] and
+      (__ \ "retweet_count").write[Int]
     )(unlift(Tweet.unapply))
 
   implicit val jsonToTweet : Reads[Tweet] = (
-    (__ \ "_id").readNullable[String].map[Option[BSONObjectID]](l => l.map(BSONObjectID(_))) and
+      (__ \ "profile_image_url_https").read[String] and
+      (__ \ "created_at").read[String] and
+      (__ \ "id_str").read[String] and
+      (__ \ "from_user").read[String] and
+      (__ \ "from_username").read[String] and
+      (__ \ "from_user_id_str").read[String] and
       (__ \ "text").read[String] and
-      (__ \ "posivote").read[Int] and
-      (__ \ "neuvote").read[Int] and
-      (__ \ "negvote").read[Int] and
-      (__ \ "user").readNullable[String]
+      (__ \ "lang").read[String] and
+      (__ \ "id").read[Long] and
+      (__ \ "possibly_sensitive").read[Boolean] and
+      (__ \ "retweeted").read[Boolean] and
+      (__ \ "followers_count").read[Int] and
+      (__ \ "favorite_count").read[Int] and
+      (__ \ "retweet_count").read[Int]
     )(Tweet.apply _)
-
-  /** serialize a Tweet into a BSON */
-  implicit object TweetBSONWriter extends BSONDocumentWriter[Tweet] {
-    def write(tweet: Tweet): BSONDocument =
-      BSONDocument(
-        "_id" -> tweet._id.getOrElse(BSONObjectID.generate),
-        "text" -> tweet.text,
-        "posivote" -> tweet.posivote,
-        "neuvote" -> tweet.neuvote,
-        "negvote" -> tweet.negvote,
-        "user" -> tweet.user.get)
-  }
-
-
-  /** deserialize a Tweet from a BSON */
-  implicit object TweetBSONReader extends BSONDocumentReader[Tweet] {
-    def read(doc: BSONDocument): Tweet = {
-      Tweet(
-        doc.getAs[BSONObjectID]("_id"),
-        doc.getAs[String]("text").get,
-        doc.getAs[Int]("posivote").get,
-        doc.getAs[Int]("neuvote").get,
-        doc.getAs[Int]("negvote").get,
-        doc.getAs[String]("user"))
-    }
-  }
 }
