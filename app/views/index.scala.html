@@ -2,47 +2,191 @@
 <html ng-app="app">
 <head>
     <meta charset="UTF-8">
-    <title>Twitter Sentiment Analysis</title>
+    <title>Estadísticas - Social+</title>
     <link rel="stylesheet" href='@routes.Assets.at("stylesheets/main.css")'>
+    <link rel="stylesheet" href='@routes.Assets.at("stylesheets/bootstrap-select.min.css")'>
+    <link rel="stylesheet" href='@routes.Assets.at("stylesheets/boostrap-tagsinput.css")'>
     <link rel="stylesheet" href='@routes.Assets.at("bootstrap/dist/css/bootstrap.css")'>
-    <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.png")'>
+    <link rel="icon" type="image/x-icon" href='@routes.Assets.at("images/Social+.ico")'>
     <script src='@routes.Assets.at("jquery/dist/jquery.min.js")' type="text/javascript"></script>
     <script src='@routes.Assets.at("bootstrap/dist/js/bootstrap.min.js")' type="text/javascript"></script>
     <script src='@routes.Assets.at("angular/angular.js")' type="text/javascript"></script>
     <script src='@routes.Assets.at("angular-resource/angular-resource.min.js")' type="text/javascript"></script>
     <script src='@routes.Assets.at("angular-route/angular-route.min.js")' type="text/javascript"></script>
     <script src='@routes.Assets.at("javascripts/main.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.at("angular-bootstrap/ui-bootstrap-tpls.min.js")' type="text/javascript"></script>
+    <script src="https://code.angularjs.org/1.0.2/i18n/angular-locale_es-es.js"></script>
 </head>
 <body ng-controller="AppCtrl">
-<div >
-    <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar navbar-socialplus navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Clasificador de Sentimientos en <i>Tweets</i></a>
+                <a href="#">
+                    <img class="social-logo" src="assets/images/logo-social-navbar.png">
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li ng-class="{ active: isActive('/')}"><a ng-href="#">Inicio</a></li>
-                    <li ng-class="{ active: isActive('/rank')}"><a ng-href="#/rank">Ranking</a></li>
-                </ul>
+            <div class="navbar-collapse collapse">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-4">
+                                <div class="col-sm-12 text-right">
+                                    <span class="name">Manuel Gonzalez</span>
+                                </div>
+                                <div class="col-sm-12 text-right negative-margin-top-xs">
+                                    <span class="role">Supervisor</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 third-column third-column-lg">
+                        <ul class="nav navbar-nav navbar-right negative-margin-top-xs">
+                            <li>
+                                <a href="#" id="dropdown-label" class="dropdown-toggle navbar-link" data-toggle="dropdown">
+                                    Idioma
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a id="locale-en" href="#">Ingl&eacute;s</a>
+                                    </li>
+                                    <li>
+                                        <a id="locale-es" href="#">Espa&ntilde;ol</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="col-sm-2" id="settings-dropdown">
+                                    <a href="#" id="dropdown-label" class="dropdown-toggle" data-toogle="dropdown">
+                                        <span class="glyphicon glyphicon-wrench wrench">
+                                        </span>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <a href="#">Cambiar contrase&ntilde;a</a>
+                                        </li>
+                                        <li>
+                                            <a id="about" href="#">Acerca de Social+</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="navbar-link" href="#">Salir</a>
+                            </li>
+                            <li>
+                                <a class="navbar-link" href="https://confluence.synergy-gb.com/display/SOCIALPLUS/Manual+de+Usuario" targer="_blank">Ayuda</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div><!-- /.container-fluid -->
-    </nav>
-</div>
-<div role="main" class="container">
-    <div class="row">
-        <!-- as the route changes, the AngularJS view will be dynamically rendered and populated -->
-        <div ng-view></div>
     </div>
-</div>
+
+    <div class="modal-container" id="about-modal-container">
+        <!-- Contenedor para modal acerca de -->
+    </div>
+
+    <div class="container-fluid" id="support-container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="levels-accordion">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-socialplus">
+                            <!-- Contenedor 1 del acordeon -->
+                            <div class="panel-heading accordeon-panel-heading pointer" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-1">
+                                <h4 class="accordeon-level-title">
+                                    <a>Indicadores Operativos</a>
+                                </h4>
+                            </div>
+                            <div id="collapse-1" class="level panel-collapse collapse in">
+                                <div class="accordeon-panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item" id="openClosedTickets">
+                                            Casos abiertos vs. cerrados
+                                        </li>
+                                        <li class="list-group-item" id="openClosedAcumTickets">
+                                            Casos no cerrados vs. cerrados
+                                        </li>
+                                        <li class="list-group-item" id="openTicketsByHour">
+                                            Casos abiertos por hora
+                                        </li>
+                                        <li class="list-group-item" id="openTicketsByCat">
+                                            Casos abiertos por categoría
+                                        </li>
+                                        <li class="list-group-item" id="promotedTicketsByLevel">
+                                            Casos ascendidos por nivel
+                                        </li>
+                                        <li class="list-group-item" id="closeTicketsByCat">
+                                            Casos cerrados por categoría
+                                        </li>
+                                        <li class="list-group-item" id="closeTicketsByLevel">
+                                            Casos cerrados por nivel
+                                        </li>
+                                        <li class="list-group-item" id="avgDuration">
+                                            Tiempo promedio
+                                        </li>
+                                        <li class="list-group-item" id="clouseForSLA">
+                                            Casos dentro y fuera de su SLA
+                                        </li>
+                                        <li class="list-group-item" id="caseOpenByUser">
+                                            Casos abiertos por usuario
+                                        </li>
+                                        <li class="list-group-item" id="auditReport">
+                                            Reporte detallado de casos
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Contenedor 2 del acordeon -->
+                            <div class="panel-heading accordeon-panel-heading pointer collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-2">
+                                <h4 class="accordeon-level-title">
+                                    <a>Indicadores de Personas</a>
+                                </h4>
+                            </div>
+                            <div id="collapse-2" class="level panel-collapse collapse">
+                                <div class="accordeon-panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item" id="recurrentUsers">
+                                            Personas recurrentes
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Contenedor 3 del acordeon -->
+                            <div class="panel-heading accordeon-panel-heading pointer collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-3">
+                                <h4 class="accordeon-level-title">
+                                    <a>Indicadores de Casos</a>
+                                </h4>
+                            </div>
+                            <div id="collapse-3" class="level panel-collapse collapse">
+                                <div class="accordeon-panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item" id="recurrentTags">
+                                            Tags recurrentes
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9" id="searchPageStats_col">
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,43 +1,25 @@
-<div class="round-gray-box">
-    <form name="UserForm" ng-submit="UserForm.$valid && generate()">
-        <div class="row" style="padding:1%;">
-            <div class="col-md-3">
-                <input name="Username" type="text" class="form-control" style="margin-left:3%"
-                       ng-model="User" placeholder="Usuario" required
-                       oninvalid="this.setCustomValidity('Introduzca un Usuario')" oninput="setCustomValidity('')">
-            </div>
-            <div class="col-md-2" style="width:14.666667%">
-                <button class="btn btn-default" style="width:100%;"  type="submit">Generar Tweet</button>
-            </div>
-            <div class="col-md-3" style="padding-top: 0.5%;" ng-show="emptied">
-                <p style="color:red;">No existen más tweets para votar!</p>
-            </div>
-        </div>
-    </form>
-    <div class="row" ng-show="getTweet">
-        <div class="row" style="padding:2% 2% 0 3%;">
-            <b> El siguiente tweet, qué tipo de sentimiento transmite?:</b>
-        </div>
-        <div class="tweet-block">
-            {{tweet.text}}
-        </div>
-        <div class="row">
-            <div class="form-group col-md-3" style="margin-left:39%;">
-                <label class="radio-inline">
-                    <div class="Negative" ng-click = "vote('negative');generate()"/>
-                </label>
-                <label class="radio-inline">
-                    <div class="Neutral" ng-click = "vote('neutral');generate()"/>
-                </label>
-                <label class="radio-inline">
-                    <div class="Positive" ng-click = "vote('positive');generate()"/>
-                </label>
+<!--Controles de Filtrado-->
+<div class="row">
+    <div id="searchPageStats_div" class="col-sm-12">
+        <div class="searchbar" id="searchbar">
+            <div class="controls">
+                <span class="searchbar-control">
+                    <input placeholder="Desde:" class="datepicker from" type="text" id="fromStats"
+                           data-date-format="yyyy-mm-dd" datepicker-popup="{{format}}" ng-model="from" ng-click="openFrom($event)"
+                           is-open="fromOpened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                           ng-required="true" close-text="Cerrar" clear-text="Limpiar" current-text="Hoy">
+                </span>
+                <span class="searchbar-control">
+                    <input placeholder="Hasta:" class="datepicker to" type="text" id="toStats" data-date-format="yyyy-mm-dd"
+                           data-date-format="yyyy-mm-dd" datepicker-popup="{{format}}" ng-model="to" ng-click="openTo($event)"
+                           is-open="toOpened" datepicker-options="dateOptions" close-text="Cerrar" clear-text="Limpiar" current-text="Hoy"
+                            min-date=from>
+                </span>
+                <span class="searchbar-control">
+                    <img class="lupaStats pointer" src="assets/images/search-btn.png">
+                </span>
+                <div style="clear:right"></div>
             </div>
         </div>
-<!--        <div class="row">
-            <div class="col-md-3 col-md-offset-10">
-                <button class="btn btn-default" style="width:50%;" ng-click="vote()">Votar!</button>
-            </div>
-        </div>-->
     </div>
 </div>

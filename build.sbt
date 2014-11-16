@@ -10,13 +10,10 @@ organization := "your.organization"
 // TODO Set your version here
 version := "2.3.1"
 
-// Scala Version, Play supports both 2.10 and 2.11
-//scalaVersion := "2.10.4"
+// Scala Version
 scalaVersion := "2.10.4"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
-
-resolvers += "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
 // Dependencies
 libraryDependencies ++= Seq(
@@ -29,8 +26,6 @@ unmanagedResourceDirectories in Assets += baseDirectory.value / "bower_component
 
 //
 // Scala Compiler Options
-// If this project is only a subproject, add these to a common project setting.
- //
 scalacOptions ++= Seq(
   "-target:jvm-1.7",
   "-encoding", "UTF-8",

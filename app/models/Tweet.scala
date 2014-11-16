@@ -7,6 +7,11 @@ import play.api.libs.json._
 /*
  * Created by domingo on 08/08/14.
  */
+
+/* Class Tweet
+* Class that holds the attributes that conforms a tweet, and it's compatible with the Twitter API
+* and Social+ backend.
+*/
 case class Tweet(profile_image_url_https: String, created_at: String, id_str: String, from_user: String,
                  from_user_id_str:String, from_username: String, text: String, lang: String, id: Long,
                  possibly_sensitive: Boolean, retweeted: Boolean, followers_count: Int, favorite_count: Int,
@@ -14,7 +19,6 @@ case class Tweet(profile_image_url_https: String, created_at: String, id_str: St
 
 object Tweet {
   /** serialize/Deserialize a Tweet into/from JSON value */
-//  implicit val tweetFormat = Json.format[Tweet]
 
   implicit val TweetToJson : Writes[Tweet] = (
       (__ \ "profile_image_url_https").write[String] and

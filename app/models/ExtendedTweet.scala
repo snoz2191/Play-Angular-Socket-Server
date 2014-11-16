@@ -9,11 +9,16 @@ import play.api.libs.json._
  * Created by domingo on 06/11/14.
  */
 
+/* Class ExtendedTweet
+* Attributes:
+*   tweet - Initial tweet to be extended
+*   polarity - Polarity of the tweet
+*   categories - List of categories that are related to the tweet
+*/
 case class ExtendedTweet(tweet: Tweet, polarity: String, categories: List[String])
 
 object ExtendedTweet {
-  /** serialize/Deserialize a Tweet into/from JSON value */
-  //  implicit val tweetFormat = Json.format[Tweet]
+  /** serialize/Deserialize an ExtendedTweet into/from JSON value */
 
   implicit val ExtendedTweetToJson : Writes[ExtendedTweet] = (
       (__).write[Tweet] and
