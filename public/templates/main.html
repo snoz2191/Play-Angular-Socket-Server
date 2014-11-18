@@ -16,10 +16,20 @@
                             min-date=from>
                 </span>
                 <span class="searchbar-control">
-                    <img class="lupaStats pointer" src="assets/images/search-btn.png">
+                    <img class="lupaStats pointer" src="assets/images/search-btn.png" ng-click="search();">
                 </span>
                 <div style="clear:right"></div>
             </div>
         </div>
     </div>
 </div>
+<div class = "row" ng-show="showGraphic">
+    <grafica></grafica>
+    <canvas width="800" height="400" style="display:none;"></canvas>
+    <input style="margin-bottom: 10px" type="button" value="Exportar Gráfica" id="download_chart" class="btn btn-default" ng-click="exportar();">
+</div>
+<div class = "row" ng-show="!showGraphic && searched">
+    Su búsqueda no produjo resultados
+</div>
+
+
